@@ -55,4 +55,13 @@ class Quiz {
     }
     return this.questions;
   };
+
+  averageDifficulty = () => {
+    let sum = this.questions.reduce((acc, question) => {
+      const total = acc + question.difficulty;
+      return total;
+    }, 0);
+    const average = sum / this.questions.length;
+    return average;
+  };
 }
