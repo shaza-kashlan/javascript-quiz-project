@@ -510,7 +510,6 @@ describe("Quiz", () => {
       ];
 
       // YOUR CODE HERE:
-      //
       // 1. Instantiate a new Quiz object with the test questions
       const quiz = new Quiz(questions, "test", 60);
 
