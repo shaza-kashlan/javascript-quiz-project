@@ -72,21 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /************  TIMER  ************/
 
-  let timer;
-  timer = setInterval(() =>{
-    quiz.timeRemaining--; 
-    console.log(`${quiz.timeRemaining}`)
+  let timer = setInterval(() => {}, 1000);
+  timer = setInterval(() => {
+    quiz.timeRemaining--;
+    console.log(`${quiz.timeRemaining}`);
     const minutes = Math.floor(quiz.timeRemaining / 60)
-    .toString()
-    .padStart(2, "0");
-  const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
-  const timeRemainingContainer = document.getElementById("timeRemaining");
-  timeRemainingContainer.innerText = `${minutes}:${seconds}`;
-if (quiz.timeRemaining === 0) {
-clearInterval(timer) 
-showResults();
-} 
-  },1000)
+      .toString()
+      .padStart(2, "0");
+    const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+    const timeRemainingContainer = document.getElementById("timeRemaining");
+    timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+    if (quiz.timeRemaining === 0) {
+      clearInterval(timer);
+      showResults();
+    }
+  }, 1000);
 
   /************  EVENT LISTENERS  ************/
 
@@ -220,20 +220,20 @@ showResults();
     quiz.currentQuestionIndex = 0;
     quiz.correctAnswers = 0;
     quiz.shuffleQuestions();
-    timer = setInterval(() =>{
-      quiz.timeRemaining--; 
-      console.log(`${quiz.timeRemaining}`)
+    timer = setInterval(() => {
+      quiz.timeRemaining--;
+      console.log(`${quiz.timeRemaining}`);
       const minutes = Math.floor(quiz.timeRemaining / 60)
-      .toString()
-      .padStart(2, "0");
-    const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
-    const timeRemainingContainer = document.getElementById("timeRemaining");
-    timeRemainingContainer.innerText = `${minutes}:${seconds}`;
-  if (quiz.timeRemaining === 0) {
-  clearInterval(timer) 
-  showResults();
-  } 
-    },1000)
+        .toString()
+        .padStart(2, "0");
+      const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+      const timeRemainingContainer = document.getElementById("timeRemaining");
+      timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+      if (quiz.timeRemaining === 0) {
+        clearInterval(timer);
+        showResults();
+      }
+    }, 1000);
     quiz.timeRemaining = quizDuration;
     showQuestion();
   }
