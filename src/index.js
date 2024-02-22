@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // showResults() - Displays the end view and the quiz results
 
   function showQuestion() {
-    let count = 0;
     // If the quiz has ended, show the results
     if (quiz.hasEnded()) {
       showResults();
@@ -98,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get the current question from the quiz by calling the Quiz class method `getQuestion()`
     const question = quiz.getQuestion();
-    count++;
+
     // Shuffle the choices of the current question by calling the method 'shuffleChoices()' on the question object
     question.shuffleChoices();
 
@@ -112,10 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Update the green progress bar
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
 
-    const percentageAnswer = (count / questions.length) * 100;
+    // //console.log(`${percentageAnswer}`);
 
-    //console.log(`${percentageAnswer}`);
-    progressBar.style.width = percentageAnswer + "%"; // This value is hardcoded as a placeholder
+    const progressPercentage =
+      (quiz.currentQuestionIndex / quiz.questions.length) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
 
     // 3. Update the question count text
     // Update the question count (div#questionCount) show the current question out of total questions
